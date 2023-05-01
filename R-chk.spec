@@ -5,7 +5,7 @@
 #
 Name     : R-chk
 Version  : 0.8.1
-Release  : 1
+Release  : 2
 URL      : https://cran.r-project.org/src/contrib/chk_0.8.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/chk_0.8.1.tar.gz
 Summary  : Check User-Supplied Function Arguments
