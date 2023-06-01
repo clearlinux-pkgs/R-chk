@@ -4,10 +4,10 @@
 # Using build pattern: R
 #
 Name     : R-chk
-Version  : 0.8.1
-Release  : 2
-URL      : https://cran.r-project.org/src/contrib/chk_0.8.1.tar.gz
-Source0  : https://cran.r-project.org/src/contrib/chk_0.8.1.tar.gz
+Version  : 0.9.0
+Release  : 3
+URL      : https://cran.r-project.org/src/contrib/chk_0.9.0.tar.gz
+Source0  : https://cran.r-project.org/src/contrib/chk_0.9.0.tar.gz
 Summary  : Check User-Supplied Function Arguments
 Group    : Development/Tools
 License  : MIT
@@ -26,16 +26,19 @@ is designed to be simple, fast and customizable.  Error messages
 
 %prep
 %setup -q -n chk
+pushd ..
+cp -a chk buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1681409187
+export SOURCE_DATE_EPOCH=1685639909
 
 %install
-export SOURCE_DATE_EPOCH=1681409187
+export SOURCE_DATE_EPOCH=1685639909
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -73,6 +76,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc . || :
 
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -132,6 +136,7 @@ R CMD check --no-manual --no-examples --no-codoc . || :
 /usr/lib64/R/library/chk/tests/testthat/test-chk-character-or-factor.R
 /usr/lib64/R/library/chk/tests/testthat/test-chk-character.R
 /usr/lib64/R/library/chk/tests/testthat/test-chk-chr.R
+/usr/lib64/R/library/chk/tests/testthat/test-chk-compatible-lengths.R
 /usr/lib64/R/library/chk/tests/testthat/test-chk-count.R
 /usr/lib64/R/library/chk/tests/testthat/test-chk-data.R
 /usr/lib64/R/library/chk/tests/testthat/test-chk-date-time.R
