@@ -4,10 +4,10 @@
 # Using build pattern: R
 #
 Name     : R-chk
-Version  : 0.9.0
-Release  : 4
-URL      : https://cran.r-project.org/src/contrib/chk_0.9.0.tar.gz
-Source0  : https://cran.r-project.org/src/contrib/chk_0.9.0.tar.gz
+Version  : 0.9.1
+Release  : 5
+URL      : https://cran.r-project.org/src/contrib/chk_0.9.1.tar.gz
+Source0  : https://cran.r-project.org/src/contrib/chk_0.9.1.tar.gz
 Summary  : Check User-Supplied Function Arguments
 Group    : Development/Tools
 License  : MIT
@@ -35,19 +35,19 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685639909
+export SOURCE_DATE_EPOCH=1696603777
 
 %install
-export SOURCE_DATE_EPOCH=1685639909
+export SOURCE_DATE_EPOCH=1696603777
 rm -rf %{buildroot}
-export LANG=C.UTF-8
-export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
-export AR=gcc-ar
-export RANLIB=gcc-ranlib
-export LDFLAGS="$LDFLAGS  -Wl,-z -Wl,relro"
+LANG=C.UTF-8
+CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -O3 -flto -fno-semantic-interposition "
+FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -O3 -flto -fno-semantic-interposition "
+FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -O3 -flto -fno-semantic-interposition "
+CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -O3 -flto -fno-semantic-interposition "
+AR=gcc-ar
+RANLIB=gcc-ranlib
+LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS  -Wl,-z -Wl,relro"
 mkdir -p %{buildroot}/usr/lib64/R/library
 
 mkdir -p ~/.R
